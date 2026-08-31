@@ -14,15 +14,53 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply final Fullmoon brand polish
+      - name: Apply Fullmoon Tiffany palette
         shell: bash
         run: |
-          python -c "from pathlib import Path; p=Path('index.html'); s=p.read_text(encoding='utf-8'); s=s.replace('--cream:#f6f3eb','--cream:#F7F5EF').replace('--green:#0f4033','--green:#123F36').replace('--deep:#082d25','--deep:#092E27').replace('--teal:#12aeb0','--teal:#81D8D0'); s=s.replace('.hero-copy:after{content:','.hero-copy:after{display:none!important;content:'); extra='/* FULLMOON TIFFANY BLUE */.feature-copy h2 span,.contact h2 span{color:#81D8D0!important}.contact-icon,.social-icon{color:#81D8D0;border-color:#81D8D066}.social:hover{border-color:#81D8D088}.footer h4{color:#81D8D0}.badge,.card-link,.demo a{color:#81D8D0;border-color:#81D8D0}.logo{width:180px}.footer-logo{width:205px;max-width:100%;height:auto;content:url(\"fullmoon-logo-light.svg\")}'; s=s.replace('</style>',extra+'</style>',1) if 'FULLMOON TIFFANY BLUE' not in s else s.replace('</style>','.logo{width:180px}.footer-logo{width:205px;max-width:100%;height:auto;content:url(\"fullmoon-logo-light.svg\")}</style>',1); s=s.replace('src=\"fullmoon-logo.svg\" alt=\"Fullmoon Hospitality\"><p>Production hospitality','src=\"fullmoon-logo-light.svg\" alt=\"Fullmoon Hospitality\"><p>Production hospitality'); p.write_text(s,encoding='utf-8')"
+          python - <<'PY'
+          from pathlib import Path
+
+          files = [p for p in Path('.').rglob('*.html') if '.git' not in p.parts]
+          replacements = {
+              '#F7F5EF': '#F6FBFA',
+              '#fffdf8': '#FFFFFF',
+              '#123F36': '#0F5B55',
+              '#092E27': '#073C39',
+              '#81D8D0': '#81D8D0',
+              '#f6f2e9': '#F6FBFA',
+              '#f6f3eb': '#F6FBFA',
+              '#123f32': '#0F5B55',
+              '#0f4033': '#0F5B55',
+              '#082d25': '#073C39',
+              '#ede8dd': '#E4F5F2',
+              '#ebe7dc': '#E4F5F2',
+          }
+
+          override = '''
+          /* FULLMOON TIFFANY SYSTEM */
+          .quote,.btn.primary,button,.btn{background:#81D8D0!important;color:#073C39!important;border-color:#81D8D0!important}
+          .quote:hover,.btn.primary:hover,button:hover,.btn:hover{background:#6CCAC1!important;color:#073C39!important}
+          .hero h1 span,.section-head h2 span,.feature-copy h2 span,.contact h2 span{color:#81D8D0!important}
+          .links a:hover,.card-link,.demo a,.badge{color:#0F5B55!important}
+          .badge{border-color:#81D8D0!important}
+          .contact-icon,.social-icon{color:#81D8D0!important;border-color:#81D8D066!important}
+          .social:hover{border-color:#81D8D088!important}
+          .footer h4{color:#81D8D0!important}
+          '''
+
+          for p in files:
+              s = p.read_text(encoding='utf-8')
+              for old, new in replacements.items():
+                  s = s.replace(old, new)
+              if 'FULLMOON TIFFANY SYSTEM' not in s and '</style>' in s:
+                  s = s.replace('</style>', override + '</style>', 1)
+              p.write_text(s, encoding='utf-8')
+          PY
       - name: Commit and push
         shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html
-          git diff --cached --quiet || git commit -m "Polish final logo presentation"
+          git add -- '*.html' '.github/workflows/final-icons.yml'
+          git diff --cached --quiet || git commit -m "Apply Fullmoon Tiffany blue visual system"
           git push
