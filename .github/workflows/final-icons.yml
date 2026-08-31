@@ -1,4 +1,4 @@
-name: Final contact icon polish
+name: Final Fullmoon brand polish
 
 on:
   push:
@@ -13,36 +13,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply refined contact, social icons and Tiffany blue palette
+      - name: Apply Tiffany blue Fullmoon palette
         run: |
           python - <<'PY'
           from pathlib import Path
           p = Path('index.html')
           s = p.read_text(encoding='utf-8')
+          replacements = {
+              '--cream:#f6f3eb': '--cream:#F7F5EF',
+              '--paper:#fffdf8': '--paper:#FFFDF8',
+              '--green:#0f4033': '--green:#123F36',
+              '--deep:#082d25': '--deep:#092E27',
+              '--teal:#12aeb0': '--teal:#81D8D0',
+          }
+          for old, new in replacements.items():
+              s = s.replace(old, new)
+          s = s.replace('.hero-copy:after{content:', '.hero-copy:after{display:none!important;content:')
           marker = '</style>'
           css = r'''
-/* FINAL FULLMOON BRAND PALETTE */
-:root{--teal:#81D8D0;--green:#123F36;--deep:#092E27;--cream:#F7F5EF;--paper:#FFFDF8;--gold:#D49B32;--ink:#14201B;--muted:#66746D;--line:#DCD9D0}
-.hero-copy:after{display:none!important}
-.links a:hover{color:var(--teal)}
-.hero h1 span,.section-head h2 span,.europe-copy h2 span{color:var(--teal)}
-.feature-copy h2 span,.contact h2 span{color:var(--teal)!important}
-.badge,.card-link,.demo a{border-color:var(--teal);color:var(--teal)}
-.contact-icon,.social-icon{color:var(--teal);border-color:#81D8D066}
+/* FINAL FULLMOON TIFFANY BLUE SYSTEM */
+.feature-copy h2 span,.contact h2 span{color:#81D8D0!important}
+.contact-icon,.social-icon{color:#81D8D0;border-color:#81D8D066}
 .social:hover{border-color:#81D8D088}
-.footer h4{color:var(--teal)}
-.footer .footer-grid>div:last-child a::before{color:var(--teal)}
+.footer h4{color:#81D8D0}
+.footer .footer-grid>div:last-child a::before{color:#81D8D0}
+.badge,.card-link,.demo a{color:#81D8D0;border-color:#81D8D0}
 '''
-          if 'FINAL FULLMOON BRAND PALETTE' in s:
-              import re
-              s = re.sub(r'/\* FINAL FULLMOON BRAND PALETTE \*/.*?(?=\n''')', '', s, flags=re.S)
-          s = s.replace(marker, css + '\n' + marker, 1)
+          if 'FINAL FULLMOON TIFFANY BLUE SYSTEM' not in s:
+              s = s.replace(marker, css + '\n' + marker, 1)
           p.write_text(s, encoding='utf-8')
           PY
-      - name: Commit brand palette
+      - name: Commit palette changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html
-          git diff --cached --quiet || git commit -m "Apply Tiffany blue Fullmoon brand palette"
+          git diff --cached --quiet || git commit -m "Apply Tiffany blue Fullmoon palette"
           git push
