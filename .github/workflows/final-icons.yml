@@ -1,49 +1,25 @@
-name: Final Fullmoon brand polish
+name: Fullmoon brand polish
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 permissions:
   contents: write
 
 jobs:
-  polish:
-    if: github.actor != 'github-actions[bot]'
+  update-brand:
+    if: ${{ github.actor != 'github-actions[bot]' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Apply Tiffany blue Fullmoon palette
+      - name: Apply Tiffany blue palette and remove visual noise
+        shell: bash
         run: |
-          python - <<'PY'
-          from pathlib import Path
-          p = Path('index.html')
-          s = p.read_text(encoding='utf-8')
-          replacements = {
-              '--cream:#f6f3eb': '--cream:#F7F5EF',
-              '--paper:#fffdf8': '--paper:#FFFDF8',
-              '--green:#0f4033': '--green:#123F36',
-              '--deep:#082d25': '--deep:#092E27',
-              '--teal:#12aeb0': '--teal:#81D8D0',
-          }
-          for old, new in replacements.items():
-              s = s.replace(old, new)
-          s = s.replace('.hero-copy:after{content:', '.hero-copy:after{display:none!important;content:')
-          marker = '</style>'
-          css = r'''
-/* FINAL FULLMOON TIFFANY BLUE SYSTEM */
-.feature-copy h2 span,.contact h2 span{color:#81D8D0!important}
-.contact-icon,.social-icon{color:#81D8D0;border-color:#81D8D066}
-.social:hover{border-color:#81D8D088}
-.footer h4{color:#81D8D0}
-.footer .footer-grid>div:last-child a::before{color:#81D8D0}
-.badge,.card-link,.demo a{color:#81D8D0;border-color:#81D8D0}
-'''
-          if 'FINAL FULLMOON TIFFANY BLUE SYSTEM' not in s:
-              s = s.replace(marker, css + '\n' + marker, 1)
-          p.write_text(s, encoding='utf-8')
-          PY
-      - name: Commit palette changes
+          python -c "from pathlib import Path; p=Path('index.html'); s=p.read_text(encoding='utf-8'); s=s.replace('--cream:#f6f3eb','--cream:#F7F5EF').replace('--green:#0f4033','--green:#123F36').replace('--deep:#082d25','--deep:#092E27').replace('--teal:#12aeb0','--teal:#81D8D0'); s=s.replace('.hero-copy:after{content:','.hero-copy:after{display:none!important;content:'); extra='/* FULLMOON TIFFANY BLUE */.feature-copy h2 span,.contact h2 span{color:#81D8D0!important}.contact-icon,.social-icon{color:#81D8D0;border-color:#81D8D066}.social:hover{border-color:#81D8D088}.footer h4{color:#81D8D0}.badge,.card-link,.demo a{color:#81D8D0;border-color:#81D8D0}'; s=s.replace('</style>',extra+'</style>',1) if 'FULLMOON TIFFANY BLUE' not in s else s; p.write_text(s,encoding='utf-8')"
+      - name: Commit and push
+        shell: bash
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
