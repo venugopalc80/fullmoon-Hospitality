@@ -1,15 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 220" role="img" aria-labelledby="title desc">
-<title id="title">Fullmoon Hospitality</title>
-<desc id="desc">Fullmoon Hospitality official multicolour pixel logo</desc>
-<rect width="860" height="220" fill="#fffdf8"/>
-<g transform="translate(34 54)" shape-rendering="geometricPrecision">
-<rect x="0" y="0" width="22" height="22" rx="3" fill="#ed4770"/><rect x="30" y="0" width="22" height="22" rx="3" fill="#f36b45"/><rect x="60" y="0" width="22" height="22" rx="3" fill="#f5a623"/><rect x="90" y="0" width="22" height="22" rx="3" fill="#f7c62f"/>
-<rect x="0" y="30" width="22" height="22" rx="3" fill="#9a58a6"/><rect x="90" y="30" width="22" height="22" rx="3" fill="#ef7a36"/>
-<rect x="0" y="60" width="22" height="22" rx="3" fill="#38b99d"/><rect x="30" y="60" width="22" height="22" rx="3" fill="#22b7c6"/><rect x="60" y="60" width="22" height="22" rx="3" fill="#7c55a7"/><rect x="90" y="60" width="22" height="22" rx="3" fill="#3dbb9d"/><rect x="120" y="60" width="22" height="22" rx="3" fill="#22b7c6"/><rect x="150" y="60" width="22" height="22" rx="3" fill="#ed4770"/><rect x="180" y="60" width="22" height="22" rx="3" fill="#f7c62f"/>
-<rect x="0" y="90" width="22" height="22" rx="3" fill="#ed3e42"/><rect x="90" y="90" width="22" height="22" rx="3" fill="#e5a72d"/><rect x="120" y="90" width="22" height="22" rx="3" fill="#21b4c3"/><rect x="150" y="90" width="22" height="22" rx="3" fill="#38b99d"/><rect x="180" y="90" width="22" height="22" rx="3" fill="#7c55a7"/>
-<rect x="0" y="120" width="22" height="22" rx="3" fill="#7c55a7"/><rect x="90" y="120" width="22" height="22" rx="3" fill="#8b5ca7"/><rect x="180" y="120" width="22" height="22" rx="3" fill="#8b5ca7"/>
-</g>
-<line x1="276" y1="45" x2="276" y2="175" stroke="#c9c8c1" stroke-width="2"/>
-<text x="315" y="103" font-family="Arial, Helvetica, sans-serif" font-size="66" font-weight="800" letter-spacing="1" fill="#111820">FULLMOON</text>
-<text x="316" y="158" font-family="Arial, Helvetica, sans-serif" font-size="45" font-weight="300" letter-spacing="2" fill="#111820">HOSPITALITY</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1230 250" role="img" aria-labelledby="title desc"><title id="title">Fullmoon Hospitality</title><desc id="desc">Official Fullmoon Hospitality logo</desc><image href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABLIAAAD6CAIAAAD0bZ8UAAAgAElEQVR4nOzdeXxV5b3//9d5z7k3O5mZzZ3aT..." x="0" y="0" width="1230" height="250" preserveAspectRatio="xMidYMid meet"/></svg>
