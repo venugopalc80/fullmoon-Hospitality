@@ -32,6 +32,21 @@ section{padding:105px 0}.section-head{display:flex;justify-content:space-between
 .contact-icon,.social-icon{color:#81D8D0!important;border-color:#81D8D066!important}
 .social:hover{border-color:#81D8D088!important}
 .footer h4{color:#81D8D0!important}
+
+/* REFINED SERVICE CARD INTERACTION */
+.services .card{position:relative;transform:translateY(0);transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s ease,border-color .35s ease;will-change:transform}
+.services .card-img{transform:scale(1);transition:transform .8s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.services .card-body{position:relative;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.services .card-link{display:inline-flex;align-items:center;gap:4px;transition:letter-spacing .35s ease,transform .35s ease,color .25s ease}
+.services .card:hover{transform:translateY(-6px);border-color:#81D8D0;box-shadow:0 18px 45px rgba(7,60,57,.12)}
+.services .card:hover .card-img{transform:scale(1.045)}
+.services .card:hover .card-body{transform:translateY(-2px)}
+.services .card:hover .card-link{transform:translateX(4px);letter-spacing:.13em}
+.services .card.is-visible{animation:serviceCardIn .7s cubic-bezier(.2,.7,.2,1) both}
+.services .card:nth-child(1){animation-delay:0s}.services .card:nth-child(2){animation-delay:.09s}.services .card:nth-child(3){animation-delay:.18s}.services .card:nth-child(4){animation-delay:.27s}
+@keyframes serviceCardIn{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@media (hover:hover) and (pointer:fine){.services .card{--mx:50%;--my:50%}.services .card:after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx) var(--my),rgba(129,216,208,.12),transparent 34%);opacity:0;transition:opacity .35s ease}.services .card:hover:after{opacity:1}}
+@media (prefers-reduced-motion:reduce){.services .card,.services .card-img,.services .card-body,.services .card-link{transition:none!important;animation:none!important}.services .card:hover{transform:none}.services .card:hover .card-img,.services .card:hover .card-body,.services .card:hover .card-link{transform:none}}
 </style>
 </head>
 <body>
@@ -53,5 +68,27 @@ section{padding:105px 0}.section-head{display:flex;justify-content:space-between
 <section class="contact" id="contact"><div class="wrap"><div class="label">Let’s talk</div><h2>Ready when<br><span>you are.</span></h2><p class="contact-intro">For production catering, events, transport or support, start the conversation directly. WhatsApp remains the quickest route for the team.</p><div class="actions"><a class="whatsapp" href="https://wa.me/447376790971"><span class="action-icon">◔</span>WhatsApp us →</a><a class="email" href="mailto:fullmoonhospitality@mail.com"><span class="action-icon">✉</span>Email Fullmoon →</a></div><div class="contact-grid"><div class="contact-box"><h3>Contact</h3><a class="contact-line" href="mailto:fullmoonhospitality@mail.com"><span class="contact-icon">✉</span>fullmoonhospitality@mail.com</a><a class="contact-line" href="https://wa.me/447376790971"><span class="contact-icon">⌕</span>+44 7376 790971</a><p class="contact-line"><span class="contact-icon">⌖</span>UK · Production catering · Transport · Logistics</p></div><div class="contact-box"><h3>Connect with us</h3><div class="socials"><a class="social" href="https://www.instagram.com/full_moonhospitality/"><span class="social-icon">IG</span><span><strong>Instagram</strong><small>Fullmoon Hospitality →</small></span></a><a class="social" href="https://www.instagram.com/meal.timeproductions/"><span class="social-icon">IG</span><span><strong>Instagram</strong><small>Meal Time Productions →</small></span></a><a class="social" href="https://www.linkedin.com/in/neeraj-makol-a549703a5/"><span class="social-icon">in</span><span><strong>LinkedIn</strong><small>Neeraj Makol →</small></span></a><a class="social" href="https://wa.me/447376790971"><span class="social-icon">WA</span><span><strong>WhatsApp</strong><small>Chat with the team →</small></span></a></div></div></div></div></section>
 </main>
 <footer class="footer"><div class="wrap"><div class="footer-grid"><div><img class="footer-logo" src="fullmoon-logo-light.svg" alt="Fullmoon Hospitality"><p>Production hospitality, catering and support across the UK, with Europe expansion planned.</p></div><div><h4>Services</h4><a href="demos/film-tv.html">Film & TV</a><a href="demos/corporate.html">Corporate</a><a href="demos/events.html">Events</a><a href="demos/production-support.html">Production Support</a></div><div><h4>Explore</h4><a href="#food">Food</a><a href="#europe">Europe</a><a href="#work">Our Work</a><a href="#contact">Contact</a></div><div class="footer-direct"><h4>Direct</h4><a href="mailto:fullmoonhospitality@mail.com"><span class="mini-icon">✉</span>Email</a><a href="https://wa.me/447376790971"><span class="mini-icon">◔</span>WhatsApp</a><a href="https://www.instagram.com/full_moonhospitality/"><span class="mini-icon">IG</span>Fullmoon Instagram</a><a href="https://www.instagram.com/meal.timeproductions/"><span class="mini-icon">IG</span>Meal Time Instagram</a></div></div><div class="bottom"><span>© 2026 Fullmoon Hospitality</span><span>Concept build · The Pixel Muses</span></div></div></footer>
+<script>
+(function(){
+  const cards=document.querySelectorAll('.services .card');
+  if(!cards.length)return;
+  const reveal=()=>cards.forEach(card=>card.classList.add('is-visible'));
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){reveal();return;}
+  const observer=new IntersectionObserver(entries=>{
+    if(entries.some(entry=>entry.isIntersecting)){
+      reveal();
+      observer.disconnect();
+    }
+  },{threshold:.16,rootMargin:'0px 0px -60px 0px'});
+  cards.forEach(card=>observer.observe(card));
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    cards.forEach(card=>card.addEventListener('pointermove',e=>{
+      const r=card.getBoundingClientRect();
+      card.style.setProperty('--mx',((e.clientX-r.left)/r.width*100)+'%');
+      card.style.setProperty('--my',((e.clientY-r.top)/r.height*100)+'%');
+    },{passive:true}));
+  }
+})();
+</script>
 </body>
 </html>
