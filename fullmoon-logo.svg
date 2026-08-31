@@ -1,35 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 110" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 88" role="img" aria-labelledby="title desc" shape-rendering="crispEdges">
 <title id="title">Fullmoon Hospitality</title>
 <desc id="desc">Fullmoon Hospitality multicolour pixel logo</desc>
-<!-- Deliberately built on an integer pixel grid. No filters, blur, rounding or effects. -->
-<g shape-rendering="crispEdges">
+<!-- Pixel mark uses a 0.5x integer scale at the 180px header display size. No filters or effects. -->
+<g>
   <!-- F -->
-  <rect x="0" y="0" width="20" height="20" fill="#ed4770"/>
-  <rect x="24" y="0" width="20" height="20" fill="#f36b45"/>
-  <rect x="48" y="0" width="20" height="20" fill="#f5a623"/>
-  <rect x="72" y="0" width="20" height="20" fill="#f7c62f"/>
-  <rect x="0" y="24" width="20" height="20" fill="#9a58a6"/>
-  <rect x="0" y="48" width="20" height="20" fill="#38b99d"/>
-  <rect x="24" y="48" width="20" height="20" fill="#22b7c6"/>
-  <rect x="48" y="48" width="20" height="20" fill="#7c55a7"/>
-  <rect x="0" y="72" width="20" height="20" fill="#ed3e42"/>
-  <rect x="0" y="96" width="20" height="14" fill="#7c55a7"/>
+  <rect x="0" y="0" width="16" height="16" fill="#ed4770"/><rect x="19.2" y="0" width="16" height="16" fill="#f36b45"/><rect x="38.4" y="0" width="16" height="16" fill="#f5a623"/><rect x="57.6" y="0" width="16" height="16" fill="#f7c62f"/>
+  <rect x="0" y="19.2" width="16" height="16" fill="#9a58a6"/>
+  <rect x="0" y="38.4" width="16" height="16" fill="#38b99d"/><rect x="19.2" y="38.4" width="16" height="16" fill="#22b7c6"/><rect x="38.4" y="38.4" width="16" height="16" fill="#7c55a7"/>
+  <rect x="0" y="57.6" width="16" height="16" fill="#ed3e42"/><rect x="0" y="76.8" width="16" height="11.2" fill="#7c55a7"/>
 
   <!-- H -->
-  <rect x="112" y="0" width="20" height="20" fill="#f5a623"/>
-  <rect x="112" y="24" width="20" height="20" fill="#ef7a36"/>
-  <rect x="112" y="48" width="20" height="20" fill="#22b7c6"/>
-  <rect x="136" y="48" width="20" height="20" fill="#38b99d"/>
-  <rect x="160" y="48" width="20" height="20" fill="#ed4770"/>
-  <rect x="184" y="48" width="20" height="20" fill="#f7c62f"/>
-  <rect x="204" y="0" width="20" height="20" fill="#f5a623"/>
-  <rect x="204" y="24" width="20" height="20" fill="#9a58a6"/>
-  <rect x="204" y="48" width="20" height="20" fill="#38b99d"/>
-  <rect x="204" y="72" width="20" height="20" fill="#7c55a7"/>
-  <rect x="112" y="72" width="20" height="20" fill="#22b7c6"/>
-  <rect x="112" y="96" width="20" height="14" fill="#e5a72d"/>
+  <rect x="89.6" y="0" width="16" height="16" fill="#f5a623"/><rect x="89.6" y="19.2" width="16" height="16" fill="#ef7a36"/>
+  <rect x="89.6" y="38.4" width="16" height="16" fill="#22b7c6"/><rect x="108.8" y="38.4" width="16" height="16" fill="#38b99d"/><rect x="128" y="38.4" width="16" height="16" fill="#ed4770"/><rect x="147.2" y="38.4" width="16" height="16" fill="#f7c62f"/>
+  <rect x="163.2" y="0" width="16" height="16" fill="#f5a623"/><rect x="163.2" y="19.2" width="16" height="16" fill="#9a58a6"/><rect x="163.2" y="38.4" width="16" height="16" fill="#38b99d"/><rect x="163.2" y="57.6" width="16" height="16" fill="#7c55a7"/>
+  <rect x="89.6" y="57.6" width="16" height="16" fill="#22b7c6"/><rect x="89.6" y="76.8" width="16" height="11.2" fill="#e5a72d"/>
 </g>
-<line x1="245" y1="10" x2="245" y2="100" stroke="#c9c8c1" stroke-width="1" shape-rendering="crispEdges"/>
-<text x="265" y="55" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" letter-spacing="0.4" fill="#111820">FULLMOON</text>
-<text x="266" y="81" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="400" letter-spacing="0.7" fill="#111820">HOSPITALITY</text>
+<line x1="196" y1="8" x2="196" y2="80" stroke="#c9c8c1" stroke-width="1"/>
+<text x="212" y="44" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="800" letter-spacing="0.3" fill="#111820">FULLMOON</text>
+<text x="213" y="65" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="400" letter-spacing="0.55" fill="#111820">HOSPITALITY</text>
 </svg>
